@@ -1,15 +1,32 @@
-/*
-
-*/
-
+/********************Variable*******************/
 :root {
     --primary-color: rgb(87, 0, 138);
-    --primary-border: rgba(87, 0, 138,0.3)
+    --primary-color-light: rgb(135, 0, 212);
+    --primary-color-light2: rgb(182, 112, 223);
+    --primary-border: rgba(87, 0, 138,0.3);
   }
+/********************Scrollbar*******************/
+
+::-webkit-scrollbar {
+    width: 5px;
+
+  }
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+::-webkit-scrollbar-thumb {
+    background:  var(--primary-color-light); 
+  }
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+/********************FONT*******************/
 
 * {
     font-family: 'Montserrat', sans-serif;
 }
+/********************LOGIN & REGISTER*******************/
 
 body {
     margin:0;
@@ -58,8 +75,13 @@ body {
 
 #register-container {
     display:none;
-}
 
+}
+#form-register-container {
+    overflow: auto;
+    padding: 10px;
+    height: 250px;
+}
 #login-container, #register-container {
     margin: 30px 10px;
 }
@@ -81,16 +103,18 @@ body {
     color: var(--primary-color) !important;
 }
 
-#form-container > .input-group > .input-group-prepend > .input-group-text, #form-container > .input-group > .form-control{
+#form-login-container > .input-group > .input-group-prepend > .input-group-text, #form-login-container > .input-group > .form-control, #form-register-container > .input-group > .input-group-prepend > .input-group-text,#form-register-container > .input-group > .form-control{
     border: var(--primary-border) solid 1px;
     background-color: white;
 }
 
-#login-submit-btn {
+#login-submit-btn, #register-submit-btn {
     background-color: var(--primary-color);
     color: white;
     text-transform: uppercase;
     border-radius: 20px;
     padding: 5px 50px;
-    margin-left: 100px;
+    display: block;
+    margin: 5px auto;
+    height: 40px;
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome !</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/spinner.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ec8c61279d.js" crossorigin="anonymous"></script>
@@ -20,59 +21,84 @@
                   Welcome to the fake Bank
               </div>
           </div>
-          <div id="login-container">
+          <!--LOGIN CONTAINER-->
+          <div id="login-container" class="w-50">
               <div id="login-text">
                   Login
               </div>
               <div id="login-text-new-account">
                 Don't have an account ? <span><a onclick="goToCreateAccount()" href="#">create your account</a></span>
             </div>
-                <form id="form-container" action="">
-                    <div class="input-group input-group-lg mt-4 ml-0 mr-0 mb-4 w-50">
+                <form id="form-login-container">
+                    <div class="input-group input-group-lg mt-4 ml-0 mr-0 mb-4">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="user-icon">
-                            <i class="far fa-user"></i>
+                            <i class="fas fa-user"></i>
                           </span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Username..." aria-label="Username" aria-describedby="user-icon">
+                        <input type="text" class="form-control" placeholder="Username..." aria-label="Username" aria-describedby="user-icon" required>
                       </div>
-                      <div class="input-group input-group-lg mt-4 ml-0 mr-0 mb-4 w-50">
+                      <div class="input-group input-group-lg mt-4 ml-0 mr-0 mb-4">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="user-icon">
                             <i class="fas fa-key"></i>
                           </span>
                         </div>
-                        <input type="password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="user-icon">
+                        <input type="password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="user-icon" required>
                       </div>
-                      <input type="submit" id="login-submit-btn" class="btn mt-3" value="login">
+                      <button type="submit" onclick="login()" id="login-submit-btn" class="btn mt-3" >Login</button>
                 </form>
             </div>
-
-            <div id="register-container">
+          <!--REGISTER CONTAINER-->
+            <div id="register-container" class="w-50">
                 <div id="register-text">
                     Create account
                 </div>
                 <div id="register-text-go-to-login">
                   Do you have an account ? <span><a onclick="goToLogin()" href="#">return to login</a></span>
               </div>
-                  <form id="form-container" action="">
-                      <div class="input-group input-group-lg mt-4 ml-0 mr-0 mb-4 w-50">
+                  <form id="form-register-container" action="">
+                      <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="user-icon">
-                              <i class="far fa-user"></i>
+                              <i class="fas fa-user"></i>
                             </span>
                           </div>
                           <input type="text" class="form-control" placeholder="Username..." aria-label="Username" aria-describedby="user-icon">
                         </div>
-                        <div class="input-group input-group-lg mt-4 ml-0 mr-0 mb-4 w-50">
+                        <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
                           <div class="input-group-prepend">
-                            <span class="input-group-text" id="user-icon">
+                            <span class="input-group-text" id="password-icon">
                               <i class="fas fa-key"></i>
                             </span>
                           </div>
-                          <input type="password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="user-icon">
+                          <input type="password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="password-icon">
                         </div>
-                        <input type="submit" id="login-submit-btn" class="btn mt-3" value="login">
+                        <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="first-name-icon">
+                              <i class="fas fa-file-signature"></i>
+                            </span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="First name..." aria-label="First name" aria-describedby="first-name-icon">
+                        </div>
+                        <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="last-name-icon">
+                              <i class="fas fa-file-signature"></i>
+                            </span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Last name..." aria-label="Last name" aria-describedby="last-name-icon">
+                        </div>
+                        <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="email-icon">
+                              <i class="fas fa-envelope"></i>
+                            </span>
+                          </div>
+                          <input type="email" class="form-control" placeholder="Email..." aria-label="Password" aria-describedby="email-icon">
+                        </div>
+                        <button type="submit" onclick="register()" id="register-submit-btn" class="btn mt-3" >Register</button>
                   </form>
               </div>
           </div>
