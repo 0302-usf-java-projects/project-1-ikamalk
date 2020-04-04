@@ -29,24 +29,30 @@
               <div id="login-text-new-account">
                 Don't have an account ? <span><a onclick="goToCreateAccount()" href="#">create your account</a></span>
             </div>
-                <form id="form-login-container">
+                <form id="form-login-container" onsubmit="login()">
+                  <!--************LOGIN FORM****************-->
+
+
+                  <!--************USERNAME****************-->
                     <div class="input-group input-group-lg mt-4 ml-0 mr-0 mb-4">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="user-icon">
-                            <i class="fas fa-user"></i>
-                          </span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Username..." aria-label="Username" aria-describedby="user-icon" required>
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="user-icon">
+                          <i class="fas fa-user"></i>
+                        </span>
                       </div>
+                      <input type="text" class="form-control" placeholder="Username..." aria-label="Username" aria-describedby="user-icon" required>
+                    </div>
+                    <!--************PASSWORD****************-->
                       <div class="input-group input-group-lg mt-4 ml-0 mr-0 mb-4">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="user-icon">
                             <i class="fas fa-key"></i>
                           </span>
                         </div>
-                        <input type="password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="user-icon" required>
+                        <input type="password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="user-icon" minlength="8" required>
                       </div>
-                      <button type="submit" onclick="login()" id="login-submit-btn" class="btn mt-3" >Login</button>
+                      <!--************SUBMIT LOGIN BTN****************-->
+                      <button type="submit"  id="login-submit-btn" class="btn mt-3" >Login</button>
                 </form>
             </div>
           <!--REGISTER CONTAINER-->
@@ -58,38 +64,45 @@
                   Do you have an account ? <span><a onclick="goToLogin()" href="#">return to login</a></span>
               </div>
                   <form id="form-register-container" action="">
+                    <!--REGISTER FORM-->
+
+                    <!--************USERNAME****************-->
                       <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="user-icon">
                               <i class="fas fa-user"></i>
                             </span>
                           </div>
-                          <input type="text" class="form-control" placeholder="Username..." aria-label="Username" aria-describedby="user-icon">
+                          <input type="text" class="form-control" placeholder="Username..." aria-label="Username" aria-describedby="user-icon" required>
                         </div>
+                    <!--************¨PASSWORD****************-->
                         <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="password-icon">
                               <i class="fas fa-key"></i>
                             </span>
                           </div>
-                          <input type="password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="password-icon">
+                          <input type="password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="password-icon" required>
                         </div>
+                    <!--************FIRST NAME****************-->
                         <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="first-name-icon">
                               <i class="fas fa-file-signature"></i>
                             </span>
                           </div>
-                          <input type="text" class="form-control" placeholder="First name..." aria-label="First name" aria-describedby="first-name-icon">
+                          <input type="text" class="form-control" placeholder="First name..." aria-label="First name" aria-describedby="first-name-icon" required>
                         </div>
+                    <!--************LAST NAME****************-->
                         <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="last-name-icon">
                               <i class="fas fa-file-signature"></i>
                             </span>
                           </div>
-                          <input type="text" class="form-control" placeholder="Last name..." aria-label="Last name" aria-describedby="last-name-icon">
+                          <input type="text" class="form-control" placeholder="Last name..." aria-label="Last name" aria-describedby="last-name-icon" required>
                         </div>
+                    <!--************EMAIL****************-->
                         <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="email-icon">
@@ -98,6 +111,7 @@
                           </div>
                           <input type="email" class="form-control" placeholder="Email..." aria-label="Password" aria-describedby="email-icon">
                         </div>
+                      <!--************SUBMIT REGISTER BTN****************-->
                         <button type="submit" onclick="register()" id="register-submit-btn" class="btn mt-3" >Register</button>
                   </form>
               </div>
