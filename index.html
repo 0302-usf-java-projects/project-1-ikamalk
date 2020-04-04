@@ -18,7 +18,7 @@
         <div class="card-body">
           <div id="triangle-top-right">
               <div id="triangle-text">
-                  Welcome to the fake Bank
+                  Welcome to the FakeCompany
               </div>
           </div>
           <!--LOGIN CONTAINER-->
@@ -63,7 +63,7 @@
                 <div id="register-text-go-to-login">
                   Do you have an account ? <span><a onclick="goToLogin()" href="#">return to login</a></span>
               </div>
-                  <form id="form-register-container" action="">
+                  <form id="form-register-container" action="" onsubmit="register()">
                     <!--REGISTER FORM-->
 
                     <!--************USERNAME****************-->
@@ -82,7 +82,7 @@
                               <i class="fas fa-key"></i>
                             </span>
                           </div>
-                          <input type="password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="password-icon" required>
+                          <input type="password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="password-icon" minlength="8" required>
                         </div>
                     <!--************FIRST NAME****************-->
                         <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
@@ -109,10 +109,10 @@
                               <i class="fas fa-envelope"></i>
                             </span>
                           </div>
-                          <input type="email" class="form-control" placeholder="Email..." aria-label="Password" aria-describedby="email-icon">
+                          <input type="email" class="form-control" placeholder="Email..." aria-label="Password" aria-describedby="email-icon" email>
                         </div>
                       <!--************SUBMIT REGISTER BTN****************-->
-                        <button type="submit" onclick="register()" id="register-submit-btn" class="btn mt-3" >Register</button>
+                        <button type="submit" id="register-submit-btn" class="btn mt-3" >Register</button>
                   </form>
               </div>
           </div>
