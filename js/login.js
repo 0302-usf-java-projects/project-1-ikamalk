@@ -1,8 +1,12 @@
 
+//Containers
 var loginContainer = document.getElementById("login-container");
 var RegisterContainer = document.getElementById("register-container");
+
+//submit btn
 var loginButton = document.getElementById("login-submit-btn");
 var registerButton = document.getElementById("register-submit-btn");
+
 
 function goToCreateAccount() {
     loginContainer.style.display = "none";
@@ -18,7 +22,7 @@ function goToLogin() {
 function login() {
     //ui
     loginButton.disabled = true;
-    loginButton.innerHTML = `<div class="loadingio-spinner-dual-ring-yw5xtq0wo"><div class="ldio-whf8ru7tfyc">
+    loginButton.innerHTML = `<div class="spinner-container"><div class="spinner">
     <div></div><div><div></div></div>
     </div></div>`;
 
@@ -33,7 +37,7 @@ function login() {
 function register() {
      //ui
      registerButton.disabled = true;
-     registerButton.innerHTML = `<div class="loadingio-spinner-dual-ring-yw5xtq0wo"><div class="ldio-whf8ru7tfyc">
+     registerButton.innerHTML = `<div class="spinner-container"><div class="spinner">
      <div></div><div><div></div></div>
      </div></div>`;
  
