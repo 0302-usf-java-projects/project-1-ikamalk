@@ -40,7 +40,7 @@
                           <i class="fas fa-user"></i>
                         </span>
                       </div>
-                      <input type="text" class="form-control" placeholder="Username..." aria-label="Username" aria-describedby="user-icon" required>
+                      <input type="text" id="login-username" class="form-control" placeholder="Username..." aria-label="Username" aria-describedby="user-icon" required>
                     </div>
                     <!--************PASSWORD****************-->
                       <div class="input-group input-group-lg mt-4 ml-0 mr-0 mb-4">
@@ -49,7 +49,7 @@
                             <i class="fas fa-key"></i>
                           </span>
                         </div>
-                        <input type="password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="user-icon" minlength="8" required>
+                        <input type="password" id="login-password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="user-icon" minlength="8" required>
                       </div>
                       <!--************SUBMIT LOGIN BTN****************-->
                       <button type="submit"  id="login-submit-btn" class="btn mt-3" >Login</button>
@@ -73,7 +73,7 @@
                               <i class="fas fa-user"></i>
                             </span>
                           </div>
-                          <input type="text" class="form-control" placeholder="Username..." aria-label="Username" aria-describedby="user-icon" required>
+                          <input type="text" id="register-username" class="form-control" placeholder="Username..." aria-label="Username" aria-describedby="user-icon" required>
                         </div>
                     <!--************¨PASSWORD****************-->
                         <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
@@ -82,7 +82,7 @@
                               <i class="fas fa-key"></i>
                             </span>
                           </div>
-                          <input type="password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="password-icon" minlength="8" required>
+                          <input type="password" id="register-password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="password-icon" minlength="8" required>
                         </div>
                     <!--************FIRST NAME****************-->
                         <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
@@ -91,7 +91,7 @@
                               <i class="fas fa-file-signature"></i>
                             </span>
                           </div>
-                          <input type="text" class="form-control" placeholder="First name..." aria-label="First name" aria-describedby="first-name-icon" required>
+                          <input type="text" id="register-first-name" class="form-control" placeholder="First name..." aria-label="First name" aria-describedby="first-name-icon" required>
                         </div>
                     <!--************LAST NAME****************-->
                         <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
@@ -100,7 +100,7 @@
                               <i class="fas fa-file-signature"></i>
                             </span>
                           </div>
-                          <input type="text" class="form-control" placeholder="Last name..." aria-label="Last name" aria-describedby="last-name-icon" required>
+                          <input type="text" id="register-last-name" class="form-control" placeholder="Last name..." aria-label="Last name" aria-describedby="last-name-icon" required>
                         </div>
                     <!--************EMAIL****************-->
                         <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
@@ -109,7 +109,7 @@
                               <i class="fas fa-envelope"></i>
                             </span>
                           </div>
-                          <input type="email" class="form-control" placeholder="Email..." aria-label="Password" aria-describedby="email-icon" email>
+                          <input type="email" id="register-email" class="form-control" placeholder="Email..." aria-label="Password" aria-describedby="email-icon" required>
                         </div>
                       <!--************SUBMIT REGISTER BTN****************-->
                         <button type="submit" id="register-submit-btn" class="btn mt-3" >Register</button>

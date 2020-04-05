@@ -79,7 +79,7 @@ body {
 }
 #form-register-container {
     overflow: auto;
-    padding: 10px;
+    padding-right: 10px;
     height: 250px;
 }
 #login-container, #register-container {
@@ -103,9 +103,13 @@ body {
     color: var(--primary-color) !important;
 }
 
-#form-login-container > .input-group > .input-group-prepend > .input-group-text, #form-login-container > .input-group > .form-control, #form-register-container > .input-group > .input-group-prepend > .input-group-text,#form-register-container > .input-group > .form-control{
+#form-login-container > .input-group > .input-group-prepend > , #form-register-container > .input-group > .input-group-prepend > .input-group-text{
     border: var(--primary-border) solid 1px;
     background-color: white;
+}
+
+#form-login-container .input-group-text, #form-login-container > .input-group > .form-control, #form-register-container > .input-group > .form-control {
+    border: var(--primary-border) solid 1px;
 }
 
 #login-submit-btn, #register-submit-btn {
