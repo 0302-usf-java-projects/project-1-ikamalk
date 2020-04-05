@@ -1,16 +1,13 @@
+saidWelcome();
 
 
-  new Typed('#triangle-text', {
-    strings: ["", "^500 Welcome to the FakeCompany !"],
-    typeSpeed: 50,
-    showCursor: false
-  });
-//""
-new Typed('#triangle-text-description', {
-    strings: ["", "^2000 The best fake company in the world !"],
-    typeSpeed: 50,
-    showCursor: false
-  });
+//emulation
+var loginResponse = false;
+
+//Root
+let root = document.documentElement;
+
+
 //Containers
 var loginContainer = document.getElementById("login-container");
 var RegisterContainer = document.getElementById("register-container");
@@ -18,6 +15,10 @@ var RegisterContainer = document.getElementById("register-container");
 //submit btn
 var loginButton = document.getElementById("login-submit-btn");
 var registerButton = document.getElementById("register-submit-btn");
+
+// triangle
+var triangleWelcome = document.getElementById('triangle-top-right');
+var triangleWrongPassword = document.getElementById('triangle-top-right-wrong-login');
 
 
 
@@ -48,6 +49,13 @@ function login() {
     //emulate
     setTimeout(() => {
         //ui
+        if(!loginResponse) {
+            //Wrong response
+            triangleWrongPassword.style.display = "block";
+            triangleWelcome.className = "smooth-hide";
+            triangleWelcome.style.opacity = "0";
+            writeWrongLogin();
+        }
         loginUsername.disabled = false;
         loginPassword.disabled = false;
         loginButton.disabled = false;
@@ -85,4 +93,32 @@ function register() {
          registerButton.disabled = false;
          registerButton.innerHTML = `Register`;
      }, 2000);
+}
+
+function saidWelcome() {
+new Typed('#triangle-text', {
+    strings: ["", "^500 Welcome to the FakeCompany !"],
+    typeSpeed: 50,
+    showCursor: false
+  });
+//""
+new Typed('#triangle-text-description', {
+    strings: ["", "^2000 The best fake company in the world !"],
+    typeSpeed: 50,
+    showCursor: false
+  });
+}
+
+function writeWrongLogin() {
+    new Typed('#triangle-text-wrong-login', {
+        strings: ["", "Incorrect username or password"],
+        typeSpeed: 30,
+        showCursor: false
+      });
+    //""
+    new Typed('#triangle-text-description-wrong-login', {
+        strings: ["", "^1000 Please verify your username and password !"],
+        typeSpeed: 30,
+        showCursor: false
+      });
 }
