@@ -1,4 +1,16 @@
 
+
+  new Typed('#triangle-text', {
+    strings: ["", "^500 Welcome to the FakeCompany !"],
+    typeSpeed: 50,
+    showCursor: false
+  });
+//""
+new Typed('#triangle-text-description', {
+    strings: ["", "^2000 The best fake company in the world !"],
+    typeSpeed: 50,
+    showCursor: false
+  });
 //Containers
 var loginContainer = document.getElementById("login-container");
 var RegisterContainer = document.getElementById("register-container");

@@ -66,16 +66,21 @@ body {
 }
 
 #triangle-text {
-    margin: 50px 0 0 80px;
+    margin: 40px 0 10px 80px;
     text-align: center;
     color: white;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 23px;
+}
+
+#triangle-text-description {
+    margin-left: 140px;
+    font-size: 14px;
+    color: white;
 }
 
 #register-container {
     display:none;
-
 }
 #form-register-container {
     overflow: auto;
