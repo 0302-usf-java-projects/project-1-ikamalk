@@ -18,8 +18,8 @@ var registerButton = document.getElementById("register-submit-btn");
 
 // triangle
 var triangleWelcome = document.getElementById('triangle-top-right');
-var triangleWrongPassword = document.getElementById('triangle-top-right-wrong-login');
-
+var triangleWrongLogin = document.getElementById('triangle-top-right-wrong-login');
+var tirangleSuccessLogin = document.getElementById('triangle-top-right-success-login');
 
 
 function goToCreateAccount() {
@@ -51,15 +51,26 @@ function login() {
         //ui
         if(!loginResponse) {
             //Wrong response
-            triangleWrongPassword.style.display = "block";
+            triangleWrongLogin.style.display = "block";
             triangleWelcome.className = "smooth-hide";
             triangleWelcome.style.opacity = "0";
             writeWrongLogin();
+            loginResponse = true;
+            //let user to retry
+            loginUsername.disabled = false;
+            loginPassword.disabled = false;
+            loginButton.disabled = false;
+            loginButton.innerHTML = `Login`;
+        } else {
+            tirangleSuccessLogin.style.display = "block";
+            tirangleSuccessLogin.className = "smooth-show";
+            tirangleSuccessLogin.style.opacity = "1";
+            writeSuccessLogin();
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1500);
         }
-        loginUsername.disabled = false;
-        loginPassword.disabled = false;
-        loginButton.disabled = false;
-    loginButton.innerHTML = `Login`;
+
     }, 2000);
 }
 
@@ -118,6 +129,15 @@ function writeWrongLogin() {
     //""
     new Typed('#triangle-text-description-wrong-login', {
         strings: ["", "^1000 Please verify your username and password !"],
+        typeSpeed: 30,
+        showCursor: false
+      });
+}
+
+function writeSuccessLogin() {
+    var loginUsername = document.getElementById('login-username');
+    new Typed('#triangle-text-success-login', {
+        strings: ["", "Welcome "+loginUsername.value+" !"],
         typeSpeed: 30,
         showCursor: false
       });
