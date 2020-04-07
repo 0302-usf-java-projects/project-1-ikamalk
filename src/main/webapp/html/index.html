@@ -39,7 +39,7 @@
               <div id="login-text-new-account">
                 Don't have an account ? <span><a onclick="goToCreateAccount()" href="#">create your account</a></span>
             </div>
-                <form id="form-login-container" onsubmit="login()">
+                <form id="form-login-container" onsubmit="login();return false;">
                   <!--************LOGIN FORM****************-->
 
 
@@ -73,7 +73,7 @@
                 <div id="register-text-go-to-login">
                   Do you have an account ? <span><a onclick="goToLogin()" href="#">return to login</a></span>
               </div>
-                  <form id="form-register-container" action="" onsubmit="register()">
+                  <form id="form-register-container" action="" onsubmit="register();return false">
                     <!--REGISTER FORM-->
 
                     <!--************USERNAME****************-->

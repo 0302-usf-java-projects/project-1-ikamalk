@@ -30,7 +30,6 @@ function goToCreateAccount() {
 function goToLogin() {
     loginContainer.style.display = "block";
     RegisterContainer.style.display = "none"
-
 }
 
 function login() {
@@ -50,7 +49,7 @@ function login() {
     setTimeout(() => {
         //ui
         if(!loginResponse) {
-            //Wrong response
+          //  Wrong response
             triangleWrongLogin.style.display = "block";
             triangleWelcome.className = "smooth-hide";
             triangleWelcome.style.opacity = "0";
