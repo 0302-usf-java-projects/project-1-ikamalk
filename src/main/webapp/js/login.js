@@ -32,12 +32,14 @@ function goToLogin() {
     RegisterContainer.style.display = "none"
 }
 
-function login() {
-    //form login
-    var loginUsername = document.getElementById('login-username');
-    var loginPassword = document.getElementById('login-password');
 
-    //ui
+
+function login() {
+  var loginUsername = document.getElementById('login-username').value;
+  var loginPassword = document.getElementById('login-password').value;
+   
+
+    //ui waiting
     loginUsername.disabled = true;
     loginPassword.disabled = true;
     loginButton.disabled = true;
@@ -45,29 +47,61 @@ function login() {
     <div></div><div><div></div></div>
     </div></div>`;
 
+
+
+
+
+var formData = new FormData();
+formData.append("username", loginUsername);
+formData.append("password", loginPassword);
+
+console.log(formData);
+
+fetch('./login', {
+  method: 'POST', // or 'PUT'
+  body: formData,
+})
+.then((response) => response.json())
+.then((data) => {
+  if(data != null) {
+    triangleWrongLogin.className = "smooth-hide";
+    tirangleSuccessLogin.style.display = "block";
+    tirangleSuccessLogin.className = "smooth-show";
+    tirangleSuccessLogin.style.opacity = "0.9";
+    writeSuccessLogin();
+    setTimeout(() => {
+        window.location.href = 'dashboard';
+    }, 1500);
+  } else {
+           //  Wrong response
+          triangleWrongLogin.style.display = "block";
+          triangleWelcome.className = "smooth-hide";
+          triangleWelcome.style.opacity = "0";
+          writeWrongLogin();
+          loginResponse = true;
+          //let user to retry
+          loginUsername.disabled = false;
+          loginPassword.disabled = false;
+          loginButton.disabled = false;
+          loginButton.innerHTML = `Login`;
+  }
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
+}
+
+function login2() {
+    //form login
+  
+
     //emulate
     setTimeout(() => {
         //ui
         if(!loginResponse) {
-          //  Wrong response
-            triangleWrongLogin.style.display = "block";
-            triangleWelcome.className = "smooth-hide";
-            triangleWelcome.style.opacity = "0";
-            writeWrongLogin();
-            loginResponse = true;
-            //let user to retry
-            loginUsername.disabled = false;
-            loginPassword.disabled = false;
-            loginButton.disabled = false;
-            loginButton.innerHTML = `Login`;
+
         } else {
-            tirangleSuccessLogin.style.display = "block";
-            tirangleSuccessLogin.className = "smooth-show";
-            tirangleSuccessLogin.style.opacity = "1";
-            writeSuccessLogin();
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 1500);
+
         }
 
     }, 2000);
