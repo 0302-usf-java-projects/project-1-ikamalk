@@ -29,11 +29,9 @@ public class Login extends HttpServlet {
      resp.setContentType("application/json");
      resp.setCharacterEncoding("UTF-8");
 	if(userLogin !=null) {
-		System.out.println("OK MADAFAKA !!!!!!!");
 	    out.print(this.gson.toJson(userLogin).toString());
 	    out.flush();  
 	} else {
-		System.out.println("NOOOOOOO !!!");
         out.print(this.gson.toJson(null).toString());
         out.flush();  
 	}

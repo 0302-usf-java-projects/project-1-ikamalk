@@ -4,6 +4,7 @@
     --primary-color-light: rgb(135, 0, 212);
     --primary-color-light2: rgb(182, 112, 223);
     --primary-border: rgba(87, 0, 138,0.3);
+    --primary-color-navbar: #7d0094;
   }
 /********************Scrollbar*******************/
 
@@ -29,13 +30,15 @@
 
 #background {
     width: 100%;
-    height: 100vh;
+    min-height: 100%;
     background-color: rgb(236, 236, 236);
     position: absolute;
 }
 
 .navbar {
-    box-shadow: 0 0 6px #d6d6d6;
+  box-shadow: 0 0 30px #9e9e9e;
+  border-radius: 0 0 30px 30px;
+  background-color: var(--primary-color-navbar) !important;
 }
 
 .navbar-nav > li {
@@ -51,8 +54,58 @@
     color: var(--primary-color-light);
 }
 
-#logout {
-    float:right;
-    font-size: 30px;
-    color: var(--primary-color-light);
+#navbar-title {
+  width: -webkit-fill-available;
+  text-align: center;
+}
+
+#navbar-right {
+  width: 450px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 30px;
+  user-select: none;
+}
+#navbar-right-container > .fa-user-circle, .fa-sign-out-alt {
+  font-size: 35px;
+  color: var(--primary-color-navbar);
+  margin-left: 10px;
+}
+
+#info-user {
+  width: 200px;
+  display: inline-block;
+}
+
+#info-user > div:first-child {
+  margin-left: 5px;
+  font-weight: bold;
+  font-size: 15px;
+}
+#info-user > div:nth-child(2) {
+  margin-left: 5px;
+  font-weight: 400;
+  font-size: 10px;
+}
+#navbar-title {
+  font-weight: bold;
+  user-select: none;
+  font-size: 18px;
+  color: white;
+}
+
+#text-table {
+  font-size: 22px;
+  font-weight: 200;
+}
+
+#text-table > .btn {
+  background-color: var(--primary-color-navbar);
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+#myTableReimbursement_wrapper {
+  padding: 10px 30px;
 }

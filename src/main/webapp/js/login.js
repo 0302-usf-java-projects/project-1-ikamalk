@@ -1,25 +1,24 @@
 saidWelcome();
 
-
-//emulation
-var loginResponse = false;
-
-//Root
-let root = document.documentElement;
-
-
 //Containers
 var loginContainer = document.getElementById("login-container");
 var RegisterContainer = document.getElementById("register-container");
-
 //submit btn
 var loginButton = document.getElementById("login-submit-btn");
 var registerButton = document.getElementById("register-submit-btn");
-
 // triangle
 var triangleWelcome = document.getElementById('triangle-top-right');
 var triangleWrongLogin = document.getElementById('triangle-top-right-wrong-login');
 var tirangleSuccessLogin = document.getElementById('triangle-top-right-success-login');
+//form register
+var registerUsername = document.getElementById("register-username");
+var registerPassword = document.getElementById("register-password");
+var registerFirstName = document.getElementById("register-first-name");
+var registerLastName = document.getElementById("register-last-name");
+var registerEmail = document.getElementById("register-email");
+//form login
+var loginUsername = document.getElementById('login-username');
+var loginPassword = document.getElementById('login-password');
 
 
 function goToCreateAccount() {
@@ -35,8 +34,7 @@ function goToLogin() {
 
 
 function login() {
-  var loginUsername = document.getElementById('login-username').value;
-  var loginPassword = document.getElementById('login-password').value;
+
    
 
     //ui waiting
@@ -52,8 +50,8 @@ function login() {
 
 
 var formData = new FormData();
-formData.append("username", loginUsername);
-formData.append("password", loginPassword);
+formData.append("username", loginUsername.value);
+formData.append("password", loginPassword.value);
 
 console.log(formData);
 
@@ -67,23 +65,23 @@ fetch('./login', {
     triangleWrongLogin.className = "smooth-hide";
     tirangleSuccessLogin.style.display = "block";
     tirangleSuccessLogin.className = "smooth-show";
-    tirangleSuccessLogin.style.opacity = "0.9";
+    tirangleSuccessLogin.style.opacity = "1";
     writeSuccessLogin();
     setTimeout(() => {
         window.location.href = 'dashboard';
     }, 1500);
   } else {
-           //  Wrong response
-          triangleWrongLogin.style.display = "block";
-          triangleWelcome.className = "smooth-hide";
-          triangleWelcome.style.opacity = "0";
-          writeWrongLogin();
-          loginResponse = true;
-          //let user to retry
-          loginUsername.disabled = false;
-          loginPassword.disabled = false;
-          loginButton.disabled = false;
-          loginButton.innerHTML = `Login`;
+    //  Wrong response
+    triangleWrongLogin.style.display = "block";
+    triangleWelcome.className = "smooth-hide";
+    triangleWelcome.style.opacity = "0";
+    writeWrongLogin();
+    loginResponse = true;
+    //let user to retry
+    loginUsername.disabled = false;
+    loginPassword.disabled = false;
+    loginButton.disabled = false;
+    loginButton.innerHTML = `Login`;
   }
 })
 .catch((error) => {
@@ -91,29 +89,10 @@ fetch('./login', {
 });
 }
 
-function login2() {
-    //form login
-  
 
-    //emulate
-    setTimeout(() => {
-        //ui
-        if(!loginResponse) {
-
-        } else {
-
-        }
-
-    }, 2000);
-}
 
 function register() {
-    //form register
-    var registerUsername = document.getElementById("register-username");
-    var registerPassword = document.getElementById("register-password");
-    var registerFirstName = document.getElementById("register-first-name");
-    var registerLastName = document.getElementById("register-last-name");
-    var registerEmail = document.getElementById("register-email");
+
 
      //ui
      registerUsername.disabled = true;
