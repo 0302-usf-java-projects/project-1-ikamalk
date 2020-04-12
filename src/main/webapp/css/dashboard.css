@@ -113,6 +113,14 @@
   padding: 10px 30px;
 }
 
+#myTableReimbursement_wrapper > label {
+    color: red !important;
+}
+
+#myTableReimbursement_filter > label > input {
+	border-radius:20px !important;
+}
+
 #please-wait {
   text-align: center;
 }
@@ -120,4 +128,9 @@
   font-weight: 100;
   font-size: 35px;
   color: rgb(66, 66, 66);
+}
+
+.btn-table {
+	border-radius:20px !important;
+	color:white !important;
 }
