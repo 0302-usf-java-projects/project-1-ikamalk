@@ -17,5 +17,10 @@ public class ErsServices {
 	public List<Reimbursement> ReimbursementService(int id) {
 		return ersdao.GetAllReimbursement(id);
 	}
+	
+	public boolean AddReimbursement(Reimbursement newReimbursement) {
+		return ersdao.AddReimbursement(newReimbursement);
+
+	}
 
 }

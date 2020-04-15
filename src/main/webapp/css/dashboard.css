@@ -40,7 +40,11 @@
   border-radius: 0 0 30px 30px;
   /* background-color: var(--primary-color-navbar) !important; */
   background: var(--primary-color-navbar);
-  background: linear-gradient(45deg, var(--primary-color-navbar) 0%, var(--primary-color-navbar-light) 100%);
+  background: linear-gradient(
+    45deg,
+    var(--primary-color-navbar) 0%,
+    var(--primary-color-navbar-light) 100%
+  );
 }
 
 .navbar-nav > li {
@@ -97,12 +101,23 @@
   color: white;
 }
 
+#no-reibursement-container {
+	text-align:center;
+	color:gray
+}
+#no-reibursement-container > #sad-smiley {
+	font-size: 120px;
+}
+#no-reibursement-container > #no-reibursement-text {
+	font-size: 30px;
+}
+
 #text-table {
   font-size: 22px;
   font-weight: 200;
 }
 
-#text-table > .btn {
+#text-table > .btn, #no-reibursement-container > .btn {
   background-color: var(--primary-color-light);
   border: 0;
   padding: 10px 15px;
@@ -114,11 +129,11 @@
 }
 
 #myTableReimbursement_wrapper > label {
-    color: red !important;
+  color: red !important;
 }
 
 #myTableReimbursement_filter > label > input {
-	border-radius:20px !important;
+  border-radius: 20px !important;
 }
 
 #please-wait {
@@ -131,6 +146,67 @@
 }
 
 .btn-table {
-	border-radius:20px !important;
-	color:white !important;
+  border-radius: 20px !important;
+  color: white !important;
+}
+
+/* MODAL STYLE*/
+#addRequest > .modal-dialog > .modal-content {
+  border-radius: 20px !important;
+  background-color: rgb(236, 236, 236);
+  padding: 15px;
+}
+
+#addRequest
+  > .modal-dialog
+  > .modal-content
+  > .modal-body
+  > form
+  > .form-group
+  > .form-control,
+#addRequest
+  > .modal-dialog
+  > .modal-content
+  > .modal-body
+  > form
+  > .form-group
+  > .custom-select {
+  border-radius: 20px !important;
+}
+
+#addRequest > .modal-dialog > .modal-content > .modal-body > #addRequestText {
+  font-size: 30px;
+  font-weight: 100;
+}
+.btn-container-modal {
+  text-align: center;
+}
+.btn-container-modal > .btn:first-child {
+  background-color: var(--primary-color-light);
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 20px;
+  margin: 5px;
+}
+.btn-container-modal > .btn:nth-child(2) {
+  color: var(--primary-color-light);
+  background-color: white;
+  border: var(--primary-color-light) solid 1px;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+
+
+/*************ANIME COLOR***********************/
+@keyframes anime_color_navbar {
+   0%   {background: #7d0094;}
+   10%  {background: green;}
+   90%  {background: green;}
+  100% {background: #7d0094;}
+}
+
+.anime_me {
+  animation-name: anime_color_navbar;
+  animation-duration: 4s;
 }

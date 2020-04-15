@@ -35,7 +35,6 @@ public class ReimbursementServlet extends HttpServlet {
 		 Gson gson = new Gson();
 		 String json = gson.toJson(myReimbursements, listType);
 		 List<Reimbursement> target2 = gson.fromJson(json, listType);
-		 System.out.println(json);
 		 out.print(json);
 		 out.flush();
 	} else {

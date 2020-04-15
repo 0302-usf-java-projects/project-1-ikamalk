@@ -3,8 +3,16 @@ var userData;
 var jsonData;
 getUserData();
 getAllReimbursement();
+var tableIsEmpty = false;
 
-
+// Add reibursement form
+var amountReimbursement = document.getElementById("amountReimbursement");
+var typeReimbursement = document.getElementById("typeReimbursement");
+var descriptionReimbursement = document.getElementById("descriptionReimbursement");
+var fileReceipt = document.getElementById("fileReceipt");
+// Add reibursement btn
+var submitBtn = document.querySelector('.submitBtn');
+var cancelBtn = document.querySelector('.cancelBtn');
 
 function showTable(data) {
 	console.log(data);
@@ -64,7 +72,93 @@ function getAllReimbursement() {
 	  formData.append("id", userData.id);
 	  console.log(formData);
 	  fetch("./reimbursement", {
-	    method: "POST", // or 'PUT'
+	    method: "POST", 
+	    body: formData,
+	  })
+	    .then((response) => response.json())
+	    .then((data) => {
+	    	setTimeout(()=>{ //emulate it
+		    	jsonData = data;
+		    	if(jsonData.length == 0) {
+		    		tableIsEmpty = true;
+			    	document.getElementById("please-wait").style.display = "none";
+			    	document.getElementById("no-reibursement-container").style.display = "block";
+
+		    	} else {
+			    	document.getElementById("reimbersoument-container").style.display = "block";
+			    	document.getElementById("please-wait").style.display = "none";
+			    	showTable(data);
+		    	}
+	    	},1000);
+
+	    })
+	    .catch((error) => {
+	      console.error("Error:", error);
+	    });
+}
+
+
+function addReimbursement() {
+	//UI loading
+	submitBtn.disabled = true;
+	cancelBtn.disabled = true;
+	submitBtn.innerHTML = `<div class="spinner-container"><div class="spinner">
+	    <div></div><div><div></div></div>
+	    </div></div>`;
+	
+	//get all value
+
+
+	//set value on formdata
+	var data = new FormData()
+	data.append('amountReimbursement', amountReimbursement.value);
+	data.append('typeReimbursement', typeReimbursement.value);
+	data.append('descriptionReimbursement', descriptionReimbursement.value);
+	data.append('authorReimbursement',userData.username);
+	//data.append('fileReceipt', ''); //fileReceipt.files[0]
+
+	
+
+
+	fetch('./addReimbursement', {
+	  method: 'POST',
+	  body: data
+	})
+	 .then((response) => response)
+	    .then((data) => {
+	    	console.log(data);
+	    	$('#addRequest').modal('hide');
+	    	newReibursementInit()
+	    })
+	    .catch((error) => {
+	      console.error("Error:", error);
+	    });
+}
+
+
+function newReibursementInit() {
+	//clear all
+	submitBtn.disabled = false;
+	cancelBtn.disabled = false;
+	amountReimbursement.value = "";
+	typeReimbursement.value = "";
+	descriptionReimbursement.value = "";
+	
+	//get new reimbursement list
+	//first show please wait and hide the table
+	document.getElementById("no-reibursement-container").style.display = "none";
+	document.getElementById("reimbersoument-container").style.display = "none";
+	document.getElementById("please-wait").style.display = "block";
+	// updateReibursement
+	updateReibursement();
+}
+
+function updateReibursement() {
+	 var formData = new FormData();
+	  formData.append("id", userData.id);
+	  console.log(formData);
+	  fetch("./reimbursement", {
+	    method: "POST", 
 	    body: formData,
 	  })
 	    .then((response) => response.json())
@@ -72,7 +166,15 @@ function getAllReimbursement() {
 	    	jsonData = data;
 	    	document.getElementById("reimbersoument-container").style.display = "block";
 	    	document.getElementById("please-wait").style.display = "none";
-	    	showTable(data);
+	    	var navbar = document.querySelector(".navbar");
+	    	navbar.classList.add("anime_me");
+	    	if(!tableIsEmpty){
+		    $('#myTableReimbursement').dataTable().fnClearTable();
+	    	$('#myTableReimbursement').dataTable().fnAddData(data);
+	    	} else {
+		    	showTable(data);
+	    	}
+	    	tableIsEmpty = false;
 	    })
 	    .catch((error) => {
 	      console.error("Error:", error);

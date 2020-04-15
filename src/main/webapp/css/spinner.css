@@ -42,7 +42,6 @@
 .spinner-container {
   width: 28px;
   height: 28px;
-  display: inline-block;
   overflow: hidden;
   background: none;
 }
@@ -55,3 +54,7 @@
   transform-origin: 0 0; /* see note above */
 }
 .spinner div { box-sizing: content-box; }
+
+
+
+

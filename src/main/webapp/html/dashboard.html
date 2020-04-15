@@ -75,10 +75,27 @@
           </div>
           <div>Please wait...</div>
         </div>
-        <div id="reimbersoument-container" style="display: none;">
+         <div id="no-reibursement-container" class="mt-5" style="display:none">
+          <div id="sad-smiley">:(</div>
+          <div id="no-reibursement-text">There is no reibursement request, please add request</div>
+           <button
+              class="btn btn-primary mt-2"
+              data-toggle="modal"
+              data-target="#addRequest"
+            >
+              Add new request
+            </button>
+        </div>
+        <div id="reimbersoument-container" style="display:none;">
           <div id="text-table" class="pt-2 pb-5">
-            My reimbersoument request
-            <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addRequest">Add new request</button>
+            My reimbursement request
+            <button
+              class="btn btn-primary float-right"
+              data-toggle="modal"
+              data-target="#addRequest"
+            >
+              Add new request
+            </button>
           </div>
           <table id="myTableReimbursement" class="display">
             <thead>
@@ -96,29 +113,65 @@
         </div>
       </div>
     </div>
-    
-    
+
     <!-- Add Request Modal -->
-    
-    <div class="modal fade" id="addRequest" tabindex="-1" role="dialog" aria-labelledby="addRequestTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+
+    <div
+      class="modal fade"
+      id="addRequest"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addRequestTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div id="addRequestText" class="mb-5">
+              Add request reimbursement
+            </div>
+            <form id="formReibursement">
+              <div class="form-group">
+                <label>Amount</label>
+                <input type="number" id="amountReimbursement" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label>Type of reimbursement</label>
+                <select class="custom-select" id="typeReimbursement" required>
+                  <option selected disabled value="">Choose...</option>
+                  <option value="1">Lodging</option>
+                  <option value="2">Travel</option>
+                  <option value="3">Food</option>
+                  <option value="4">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea
+                  class="form-control"
+                  id="descriptionReimbursement"
+                  rows="3"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Receipt</label>
+                <input
+                  type="file"
+                  class="form-control-file"
+                  id="fileReceipt"
+                />
+              </div>
+                             
+              
+              <div class="btn-container-modal">
+               <button type="button" onclick="addReimbursement();" class="btn btn-primary submitBtn">Submit</button>
+               <button class="btn btn-primary cancelBtn">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

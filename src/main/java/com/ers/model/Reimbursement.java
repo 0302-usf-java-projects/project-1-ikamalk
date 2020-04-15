@@ -41,6 +41,17 @@ public class Reimbursement {
 		this.reimb_status_id = reimb_status_id;
 		this.reimb_type_id = reimb_type_id;
 	}
+	
+	
+	//add Reimbursement
+	public Reimbursement(double reimb_amount, String reimb_description, String reimb_receipt, String reimb_author, int reimb_type_id) {
+		super();
+		this.reimb_amount = reimb_amount;
+		this.reimb_description = reimb_description;
+		this.reimb_receipt = reimb_receipt;
+		this.reimb_author = reimb_author;
+		this.reimb_type_id = reimb_type_id;
+	}
 	public int getReimb_id() {
 		return reimb_id;
 	}

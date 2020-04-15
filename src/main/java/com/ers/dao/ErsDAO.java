@@ -53,6 +53,21 @@ public class ErsDAO implements ErsDaoInterface<User,Reimbursement> {
 		return null;
 	}
 
+	@Override
+	public boolean AddReimbursement(Reimbursement r) {
+		try(Connection conn = ConnectionUtil.connect()) {  
+			String sql = "insert into ers_reimbursement (reimb_amount,reimb_submitted,reimb_description,reimb_receipt,reimb_author,reimb_status_id,reimb_type_id) values("+r.getReimb_amount()+",current_timestamp,'"+r.getReimb_description()+"','','"+r.getReimb_author()+"',1,"+r.getReimb_type_id()+")";
+		       PreparedStatement ps = conn.prepareStatement(sql);
+		       ps.execute();
+			   ps.close();
+			   System.out.println(r);
+		       return true;
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		return false;
+	}
+
 
 
 }
