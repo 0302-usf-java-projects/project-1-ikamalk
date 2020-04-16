@@ -14,13 +14,15 @@ var typeReimbursement = document.getElementById("typeReimbursement");
 var descriptionReimbursement = document.getElementById("descriptionReimbursement");
 var fileReceipt = document.getElementById("fileReceipt");
 // Add reibursement btn
-var submitBtn = document.querySelector('.submitBtn');
+var approveBtn = document.querySelector('.approveBtn');
+var rejectBtn = document.querySelector('.rejectBtn');
 var cancelBtn = document.querySelector('.cancelBtn');
 
 function showTable(data) {
 	console.log(data);
 	    $('#myTableReimbursement').DataTable( {
 	    	"data": data,
+	    	"order": [[ 0, "desc" ]],
 	    	"columns": [
 	            { data: 'reimb_id' },
 	            { data: 'reimb_author'},
@@ -123,37 +125,42 @@ function getAllReimbursement() {
 }
 
 
-function addReimbursement() {
+function sendDecisionReimbursement(reimb_id,status) {
 	//UI loading
-	submitBtn.disabled = true;
+	approveBtn.disabled = true;
+	rejectBtn.disabled = true;
 	cancelBtn.disabled = true;
-	submitBtn.innerHTML = `<div class="spinner-container"><div class="spinner">
-	    <div></div><div><div></div></div>
-	    </div></div>`;
+	if(status == 2){
+		approveBtn.innerHTML = `<div class="spinner-container"><div class="spinner">
+		    <div></div><div><div></div></div>
+		    </div></div>`;
+	} else {
+		rejectBtn.innerHTML = `<div class="spinner-container"><div class="spinner">
+		    <div></div><div><div></div></div>
+		    </div></div>`;
+	}
+
 	
 	//get all value
 
 
 	//set value on formdata
 	var data = new FormData()
-	data.append('amountReimbursement', amountReimbursement.value);
-	data.append('typeReimbursement', typeReimbursement.value);
-	data.append('descriptionReimbursement', descriptionReimbursement.value);
-	data.append('authorReimbursement',userData.username);
-	//data.append('fileReceipt', ''); //fileReceipt.files[0]
+	data.append('reimb_id',reimb_id);
+	data.append('new_status_reimb',status);
 
 	
 
 
-	fetch('./addReimbursement', {
+	fetch('./decisionReimbursement', {
 	  method: 'POST',
 	  body: data
 	})
 	 .then((response) => response)
 	    .then((data) => {
 	    	console.log(data);
-	    	$('#addRequest').modal('hide');
-	    	newReibursementInit();
+	    	$('#showRequest').modal('hide');
+	    	newReibursementInit(reimb_id,status);
 	    })
 	    .catch((error) => {
 	      console.error("Error:", error);
@@ -161,15 +168,13 @@ function addReimbursement() {
 }
 
 
-function newReibursementInit() {
+function newReibursementInit(reimb_id,status) {
 	//text success
 	successReimbursementText();
 	//clear all
-	submitBtn.disabled = false;
+	approveBtn.disabled = false;
+	rejectBtn.disabled = false;
 	cancelBtn.disabled = false;
-	amountReimbursement.value = "";
-	typeReimbursement.value = "";
-	descriptionReimbursement.value = "";
 	
 	//get new reimbursement list
 	//first show please wait and hide the table
@@ -178,6 +183,20 @@ function newReibursementInit() {
 	document.getElementById("please-wait").style.display = "block";
 	// updateReibursement
 	updateReibursement();
+}
+
+
+
+function showRequest(index) {
+	$('#showRequest').modal('show');
+	console.log(jsonData[index]);
+	document.getElementById("amountReimbursement").value = jsonData[index].reimb_amount;
+	document.getElementById("typeReimbursement").value = jsonData[index].reimb_type_id;
+	document.getElementById("descriptionReimbursement").value = jsonData[index].reimb_description;
+	document.querySelector('.approveBtn').setAttribute('onclick',"sendDecisionReimbursement("+jsonData[index].reimb_id+",2)");
+	document.querySelector('.rejectBtn').setAttribute('onclick',"sendDecisionReimbursement("+jsonData[index].reimb_id+",3)");
+
+
 }
 
 function updateReibursement() {
@@ -206,16 +225,6 @@ function updateReibursement() {
 	    .catch((error) => {
 	      console.error("Error:", error);
 	    });
-}
-
-function showRequest(index) {
-	$('#showRequest').modal('show');
-	console.log(jsonData[index]);
-	document.getElementById("amountReimbursement").value = jsonData[index].reimb_amount;
-	document.getElementById("typeReimbursement").value = jsonData[index].reimb_type_id;
-	document.getElementById("descriptionReimbursement").value = jsonData[index].reimb_description;
-	
-
 }
 
 function logout() {

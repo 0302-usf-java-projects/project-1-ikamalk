@@ -18,9 +18,12 @@ public class ErsServices {
 		return ersdao.GetAllReimbursement(id);
 	}
 	
-	public boolean AddReimbursement(Reimbursement newReimbursement) {
+	public boolean AddReimbursementService(Reimbursement newReimbursement) {
 		return ersdao.AddReimbursement(newReimbursement);
-
+	}
+	
+	public boolean ReimbursementDecisionService(int reimb_id,int decision) {
+		return ersdao.ReimbursementDecision(reimb_id,decision);
 	}
 
 }

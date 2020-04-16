@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome !</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/spinner.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ec8c61279d.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div id="background">
+
+    <div id="login-card" class="card">
+        <div class="card-body">
+          <div id="triangle-top-right">
+              <div id="triangle-text">
+              </div>
+              <div id="triangle-text-description"></div>
+          </div>
+          <div id="triangle-top-right-wrong-login">
+            <div id="triangle-text-wrong-login">
+            </div>
+            <div id="triangle-text-description-wrong-login"></div>
+          </div>
+          <div id="triangle-top-right-success-login">
+            <div id="triangle-text-success-login">
+            </div>
+            <div id="triangle-text-description-success-login"></div>
+          </div>
+          <!--LOGIN CONTAINER-->
+          <div id="login-container" class="w-50">
+              <div id="login-text">
+                  Login
+              </div>
+              <div id="login-text-new-account">
+                Don't have an account ? <span><a onclick="goToCreateAccount()" href="#">create your account</a></span>
+            </div>
+                <form id="form-login-container" onsubmit="login();return false;">
+                  <!--************LOGIN FORM****************-->
+
+
+                  <!--************USERNAME****************-->
+                    <div class="input-group input-group-lg mt-4 ml-0 mr-0 mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="user-icon">
+                          <i class="fas fa-user"></i>
+                        </span>
+                      </div>
+                      <input type="text" name="username" id="login-username" class="form-control" placeholder="Username..." aria-label="Username" aria-describedby="user-icon" required>
+                    </div>
+                    <!--************PASSWORD****************-->
+                      <div class="input-group input-group-lg mt-4 ml-0 mr-0 mb-4">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="user-icon">
+                            <i class="fas fa-key"></i>
+                          </span>
+                        </div>
+                        <input type="password" name="password" id="login-password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="user-icon" minlength="8" required>
+                      </div>
+                      <!--************SUBMIT LOGIN BTN****************-->
+                      <button type="submit"  id="login-submit-btn" class="btn mt-3" >Login</button>
+                </form>
+            </div>
+          <!--REGISTER CONTAINER-->
+            <div id="register-container" class="w-50">
+                <div id="register-text">
+                    Create account
+                </div>
+                <div id="register-text-go-to-login">
+                  Do you have an account ? <span><a onclick="goToLogin()" href="#">return to login</a></span>
+              </div>
+                  <form id="form-register-container" action="" onsubmit="register();return false">
+                    <!--REGISTER FORM-->
+
+                    <!--************USERNAME****************-->
+                      <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="user-icon">
+                              <i class="fas fa-user"></i>
+                            </span>
+                          </div>
+                          <input type="text" id="register-username" class="form-control" placeholder="Username..." aria-label="Username" aria-describedby="user-icon" required>
+                        </div>
+                    <!--************¨PASSWORD****************-->
+                        <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="password-icon">
+                              <i class="fas fa-key"></i>
+                            </span>
+                          </div>
+                          <input type="password" id="register-password" class="form-control" placeholder="Password..." aria-label="Password" aria-describedby="password-icon" minlength="8" required>
+                        </div>
+                    <!--************FIRST NAME****************-->
+                        <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="first-name-icon">
+                              <i class="fas fa-file-signature"></i>
+                            </span>
+                          </div>
+                          <input type="text" id="register-first-name" class="form-control" placeholder="First name..." aria-label="First name" aria-describedby="first-name-icon" required>
+                        </div>
+                    <!--************LAST NAME****************-->
+                        <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="last-name-icon">
+                              <i class="fas fa-file-signature"></i>
+                            </span>
+                          </div>
+                          <input type="text" id="register-last-name" class="form-control" placeholder="Last name..." aria-label="Last name" aria-describedby="last-name-icon" required>
+                        </div>
+                    <!--************EMAIL****************-->
+                        <div class="input-group input-group-lg mt-4 ml-0 mr-2 mb-4">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="email-icon">
+                              <i class="fas fa-envelope"></i>
+                            </span>
+                          </div>
+                          <input type="email" id="register-email" class="form-control" placeholder="Email..." aria-label="Password" aria-describedby="email-icon" required>
+                        </div>
+                      <!--************SUBMIT REGISTER BTN****************-->
+                        <button type="submit" id="register-submit-btn" class="btn mt-3" >Register</button>
+                  </form>
+              </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+
+    
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="node_modules/typed.js/lib/typed.min.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

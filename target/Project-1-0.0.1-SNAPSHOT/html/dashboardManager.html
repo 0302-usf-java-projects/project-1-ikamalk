@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome !</title>
+    <link rel="stylesheet" href="css/dashboardManager.css" />
+    <link rel="stylesheet" href="css/spinner.css" />
+    <link rel="stylesheet" href="css/spinner_page.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/ec8c61279d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+ <body>
+    <div id="background">
+      <!--NAVBAR-->
+      <nav class="navbar navbar-expand-lg navbar-white">
+        <a class="navbar-brand" href="#">
+          <img src="assets/img/fakecompanyLogo.png" alt="" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div id="navbar-title-welcome"></div>
+          <div id="navbar-title-success-reimbursement" style="display:none;"></div>
+          <div id="navbar-right">
+            <div id="navbar-right-container">
+              <i class="far fa-user-circle"></i>
+              <div id="info-user">
+                <div id="first-name-last-name"></div>
+                <div id="user-id"></div>
+              </div>
+              <i id="logout" onclick="logout()" class="fas fa-sign-out-alt"></i>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="container mt-5">
+        <div id="please-wait" class="mt-5">
+          <div class="spinner-page-container">
+            <div class="spinner-page">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div>Please wait...</div>
+        </div>
+         <div id="no-reibursement-container" class="mt-5" style="display:none">
+          <div id="sad-smiley">:(</div>
+          <div id="no-reibursement-text">There is no reibursement request, please add request</div>
+           <button
+              class="btn btn-primary mt-2"
+              data-toggle="modal"
+              data-target="#addRequest"
+            >
+              Add new request
+            </button>
+        </div>
+        <div id="reimbersoument-container" style="display:none;">
+          <div id="text-table" class="pt-2 pb-5">
+            Reimbursements requests
+           
+          </div>
+          <table id="myTableReimbursement" class="display">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Auhtor</th>
+                <th>Amount</th>
+                <th>Submited at</th>
+                <th>Description</th>
+                <th>Receipt</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Edit</th>
+                
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Request Modal -->
+
+    <div
+      class="modal fade"
+      id="showRequest"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="showRequestTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div id="showRequestText" class="mb-5">
+              Reimbursement request
+            </div>
+            <form id="formReibursement">
+              <div class="form-group">
+                <label>Amount</label>
+                <input type="number" id="amountReimbursement" class="form-control" disabled/>
+              </div>
+              <div class="form-group">
+                <label>Type of reimbursement</label>
+                <select class="custom-select" id="typeReimbursement" disabled>
+                  <option selected disabled value="">Choose...</option>
+                  <option value="1">Lodging</option>
+                  <option value="2">Travel</option>
+                  <option value="3">Food</option>
+                  <option value="4">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea
+                  class="form-control"
+                  id="descriptionReimbursement"
+                  rows="3" disabled
+                ></textarea>
+              </div>
+           <!--    <div class="form-group">
+                <label for="exampleFormControlFile1">Receipt</label>
+                <input
+                  type="file"
+                  class="form-control-file"
+                  id="fileReceipt"
+                />
+              </div> -->
+                             
+              
+              <div class="btn-container-modal">
+               <button type="button" class="btn btn-success approveBtn">Approve</button>
+                <button type="button" class="btn btn-danger rejectBtn">Reject</button>
+               <button class="btn btn-primary cancelBtn">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="node_modules/typed.js/lib/typed.min.js"></script>
+    <script src="js/dashboardManager.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+  </body>
+</html>

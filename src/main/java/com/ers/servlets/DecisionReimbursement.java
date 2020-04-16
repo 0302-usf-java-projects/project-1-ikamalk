@@ -3,6 +3,8 @@ package com.ers.servlets;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.ers.model.Reimbursement;
 import com.ers.service.ErsServices;
 
+@WebServlet(urlPatterns = {"/decisionReimbursement"})
+@MultipartConfig
 public class DecisionReimbursement extends HttpServlet {
 	
 	ErsServices erss = new ErsServices();
@@ -17,9 +21,8 @@ public class DecisionReimbursement extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println(req.getParameter("authorReimbursement"));
-		erss.AddReimbursement(new Reimbursement(Double.parseDouble(req.getParameter("amountReimbursement")),req.getParameter("descriptionReimbursement"),"",
-				req.getParameter("authorReimbursement"),Integer.parseInt(req.getParameter("typeReimbursement"))));
+		erss.ReimbursementDecisionService(Integer.parseInt(req.getParameter("reimb_id")),Integer.parseInt(req.getParameter("new_status_reimb")));
+		
 		
 //		Part filePart = req.getPart("fileReceipt"); // Retrieves <input type="file" name="file">
 //	    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.

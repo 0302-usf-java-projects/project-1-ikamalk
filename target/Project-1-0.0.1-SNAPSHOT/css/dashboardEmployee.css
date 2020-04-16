@@ -1,0 +1,220 @@
+/********************Variable*******************/
+:root {
+  --primary-color: rgb(87, 0, 138);
+  --primary-color-light: rgb(135, 0, 212);
+  --primary-color-light2: rgb(182, 112, 223);
+  --primary-border: rgba(87, 0, 138, 0.3);
+  --primary-color-navbar: #7d0094;
+  --primary-color-navbar-light: rgba(172, 0, 203, 1);
+}
+/********************Scrollbar*******************/
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color-light);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/********************FONT*******************/
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+#background {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgb(236, 236, 236);
+  position: absolute;
+}
+
+.navbar {
+  box-shadow: 0 0 30px #9e9e9e;
+  border-radius: 0 0 30px 30px;
+  /* background-color: var(--primary-color-navbar) !important; */
+  background: var(--primary-color-navbar);
+  background: linear-gradient(
+    45deg,
+    var(--primary-color-navbar) 0%,
+    var(--primary-color-navbar-light) 100%
+  );
+}
+
+.navbar-nav > li {
+  margin: 0 50px;
+}
+
+.navbar-nav > li > a {
+  color: black;
+  font-weight: 800;
+}
+
+.navbar-nav > .active > a {
+  color: var(--primary-color-light);
+}
+
+#logout {
+	cursor:pointer;
+}
+
+#navbar-title-welcome,#navbar-title-success-reimbursement {
+  width: -webkit-fill-available;
+  text-align: center;
+  color:white;
+  font-size:25px;
+  font-weight:bold;
+  user-select:none;
+}
+
+#navbar-right {
+  width: 450px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 30px;
+  user-select: none;
+}
+#navbar-right-container > .fa-user-circle,
+.fa-sign-out-alt {
+  font-size: 35px;
+  color: var(--primary-color-navbar-light);
+  margin-left: 10px;
+}
+
+#info-user {
+  width: 200px;
+  display: inline-block;
+}
+
+#info-user > div:first-child {
+  margin-left: 5px;
+  font-weight: bold;
+  font-size: 15px;
+}
+#info-user > div:nth-child(2) {
+  margin-left: 5px;
+  font-weight: 400;
+  font-size: 10px;
+}
+#navbar-title {
+  font-weight: bold;
+  user-select: none;
+  font-size: 18px;
+  color: white;
+}
+
+#no-reibursement-container {
+	text-align:center;
+	color:gray
+}
+#no-reibursement-container > #sad-smiley {
+	font-size: 120px;
+}
+#no-reibursement-container > #no-reibursement-text {
+	font-size: 30px;
+}
+
+#text-table {
+  font-size: 22px;
+  font-weight: 200;
+}
+
+#text-table > .btn, #no-reibursement-container > .btn {
+  background-color: var(--primary-color-light);
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+#myTableReimbursement_wrapper {
+  padding: 10px 30px;
+}
+
+#myTableReimbursement_wrapper > label {
+  color: red !important;
+}
+
+#myTableReimbursement_filter > label > input {
+  border-radius: 20px !important;
+}
+
+#please-wait {
+  text-align: center;
+}
+#please-wait div:nth-child(2) {
+  font-weight: 100;
+  font-size: 35px;
+  color: rgb(66, 66, 66);
+}
+
+.btn-table {
+  border-radius: 20px !important;
+  color: white !important;
+}
+
+/* MODAL STYLE*/
+#addRequest > .modal-dialog > .modal-content {
+  border-radius: 20px !important;
+  background-color: rgb(236, 236, 236);
+  padding: 15px;
+}
+
+#addRequest
+  > .modal-dialog
+  > .modal-content
+  > .modal-body
+  > form
+  > .form-group
+  > .form-control,
+#addRequest
+  > .modal-dialog
+  > .modal-content
+  > .modal-body
+  > form
+  > .form-group
+  > .custom-select {
+  border-radius: 20px !important;
+}
+
+#addRequest > .modal-dialog > .modal-content > .modal-body > #addRequestText {
+  font-size: 30px;
+  font-weight: 100;
+}
+.btn-container-modal {
+  text-align: center;
+}
+.btn-container-modal > .btn:first-child {
+  background-color: var(--primary-color-light);
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 20px;
+  margin: 5px;
+}
+.btn-container-modal > .btn:nth-child(2) {
+  color: var(--primary-color-light);
+  background-color: white;
+  border: var(--primary-color-light) solid 1px;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+
+
+/*************ANIME COLOR***********************/
+@keyframes anime_color_navbar {
+   0%   {background: #7d0094;}
+   10%  {background: green;}
+   90%  {background: green;}
+  100% {background: #7d0094;}
+}
+
+.anime_me {
+  animation-name: anime_color_navbar;
+  animation-duration: 4s;
+}

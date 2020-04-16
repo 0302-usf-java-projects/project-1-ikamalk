@@ -25,7 +25,7 @@ public class AddReimbursement extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println(req.getParameter("authorReimbursement"));
-		erss.AddReimbursement(new Reimbursement(Double.parseDouble(req.getParameter("amountReimbursement")),req.getParameter("descriptionReimbursement"),"",
+		erss.AddReimbursementService(new Reimbursement(Double.parseDouble(req.getParameter("amountReimbursement")),req.getParameter("descriptionReimbursement"),"",
 				req.getParameter("authorReimbursement"),Integer.parseInt(req.getParameter("typeReimbursement"))));
 		
 //		Part filePart = req.getPart("fileReceipt"); // Retrieves <input type="file" name="file">

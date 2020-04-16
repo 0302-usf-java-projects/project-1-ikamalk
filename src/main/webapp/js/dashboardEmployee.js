@@ -20,6 +20,7 @@ function showTable(data) {
 	console.log(data);
 	    $('#myTableReimbursement').DataTable( {
 	    	"data": data,
+	    	"order": [[ 0, "desc" ]],
 	    	"columns": [
 	            { data: 'reimb_id' },
 	            { data: 'reimb_amount' },
