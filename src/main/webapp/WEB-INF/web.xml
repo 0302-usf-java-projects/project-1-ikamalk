@@ -4,15 +4,5 @@
   <welcome-file-list>
     <welcome-file>html/index.html</welcome-file>
   </welcome-file-list>
-    
-      <servlet>
-  	<servlet-name>dashboard</servlet-name>
-  	<servlet-class>com.revature.servlets.DashboardServlet</servlet-class>
-  </servlet>
-  
-  <!-- map the servlet to a url pattern -->
-  <servlet-mapping>
-  	<servlet-name>dashboard</servlet-name>
-  	<url-pattern>/dashboard</url-pattern>
-  </servlet-mapping>
+   
 </web-app>

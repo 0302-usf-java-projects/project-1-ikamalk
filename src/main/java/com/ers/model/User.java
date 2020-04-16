@@ -1,13 +1,13 @@
 package com.ers.model;
 
 public class User {
-	private int id;
-	private String username;
-	private String password;
-	private String first_name;
-	private String last_name;
-	private String email;
-	private int role_id;
+	private static int id;
+	private static String username;
+	private static String password;
+	private static String first_name;
+	private static String last_name;
+	private static String email;
+	private static int role_id;
 	
 	public User() {
 		super();

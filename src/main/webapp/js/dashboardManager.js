@@ -4,6 +4,9 @@ var jsonData;
 getUserData();
 getAllReimbursement();
 var tableIsEmpty = false;
+var navbarText;
+var requestSelected;
+
 
 // Add reibursement form
 var amountReimbursement = document.getElementById("amountReimbursement");
@@ -20,6 +23,7 @@ function showTable(data) {
 	    	"data": data,
 	    	"columns": [
 	            { data: 'reimb_id' },
+	            { data: 'reimb_author'},
 	            { data: 'reimb_amount' },
 	            { data: 'reimb_submitted' },
 	            { data: 'reimb_description' },
@@ -39,18 +43,38 @@ function showTable(data) {
 
 	                	}
 	                }
+	            },
+	            {
+	            	 "className":      'options',
+		                "data":           data,
+		                "render": function(data, type, full, meta){
+				                   return "<button class='btn btn-primary' onclick='showRequest("+meta.row+")' style='border-radius:20px !important'><i class='fas fa-edit' ></i></button>";
+		                }
+	            	
 	            }
 	        ]
 	    } );
 }
 
 function saidWelcome() {
-  new Typed("#navbar-title", {
+  navbarText = new Typed("#navbar-title-welcome", {
     strings: ["", "Welcome to the FakeCompany !"],
     typeSpeed: 25,
     showCursor: false,
   });
+  
 }
+
+function successReimbursementText() {
+	console.log('success');
+	document.getElementById("navbar-title-welcome").style.display = "none";
+	document.getElementById("navbar-title-success-reimbursement").style.display = "block";
+	navbarText=  new Typed("#navbar-title-success-reimbursement", {
+	    strings: ["Your reimbursement request was added successfuly !"],
+	    typeSpeed: 35,
+	    showCursor: false,
+	  });
+	}
 
 function getUserData() {
   userData = localStorage.getItem("userData");
@@ -64,8 +88,9 @@ function setUserData() {
   document.getElementById("first-name-last-name").innerHTML =
     userData.first_name + " " + userData.last_name;
   //set ID
-  document.getElementById("user-id").innerHTML =(userData.role_id == 1 ? "Employee #" : "Manager #")+ userData.id;
+  document.getElementById("user-id").innerHTML =(userData.role_id == 1 ? "Manager #" : "Employee #")+ userData.id;
 }
+
 
 function getAllReimbursement() {
 	 var formData = new FormData();
@@ -128,7 +153,7 @@ function addReimbursement() {
 	    .then((data) => {
 	    	console.log(data);
 	    	$('#addRequest').modal('hide');
-	    	newReibursementInit()
+	    	newReibursementInit();
 	    })
 	    .catch((error) => {
 	      console.error("Error:", error);
@@ -137,6 +162,8 @@ function addReimbursement() {
 
 
 function newReibursementInit() {
+	//text success
+	successReimbursementText();
 	//clear all
 	submitBtn.disabled = false;
 	cancelBtn.disabled = false;
@@ -179,4 +206,19 @@ function updateReibursement() {
 	    .catch((error) => {
 	      console.error("Error:", error);
 	    });
+}
+
+function showRequest(index) {
+	$('#showRequest').modal('show');
+	console.log(jsonData[index]);
+	document.getElementById("amountReimbursement").value = jsonData[index].reimb_amount;
+	document.getElementById("typeReimbursement").value = jsonData[index].reimb_type_id;
+	document.getElementById("descriptionReimbursement").value = jsonData[index].reimb_description;
+	
+
+}
+
+function logout() {
+    window.location.href = "./";
+    userData = {};
 }

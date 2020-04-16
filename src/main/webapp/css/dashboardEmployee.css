@@ -60,9 +60,17 @@
   color: var(--primary-color-light);
 }
 
-#navbar-title {
+#logout {
+	cursor:pointer;
+}
+
+#navbar-title-welcome,#navbar-title-success-reimbursement {
   width: -webkit-fill-available;
   text-align: center;
+  color:white;
+  font-size:25px;
+  font-weight:bold;
+  user-select:none;
 }
 
 #navbar-right {

@@ -18,7 +18,7 @@ public class ErsDAO implements ErsDaoInterface<User,Reimbursement> {
 	@Override
 	public User Authentication(String username, String password) {
 		try(Connection conn = ConnectionUtil.connect()) {  
-		String sql = "select * from ers_users where ers_username='"+username+"' and ers_password= '"+password+"';\r\n";
+		String sql = "select * from ers_users where ers_username='"+username+"'and ers_password= md5('"+username+"'||'"+password+"'||'ers_project')";
 	       PreparedStatement ps = conn.prepareStatement(sql);
 	       ResultSet b=ps.executeQuery();
 	       if(b.next()) {
