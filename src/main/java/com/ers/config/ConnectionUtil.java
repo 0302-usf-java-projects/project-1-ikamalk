@@ -18,19 +18,19 @@ public class ConnectionUtil {
 		}
 	}
 
-//	public static Connection connect() throws SQLException {
-//		return DriverManager.getConnection(
-//				"jdbc:postgresql://postres-doesnt-matter.cvlbfwidrytg.us-east-2.rds.amazonaws.com:5432/ers_db",
-//				"ers_project",
-//				"password"
-//				);
-//	}
+	public static Connection connect() throws SQLException {
+		return DriverManager.getConnection(
+				"jdbc:postgresql://postres-doesnt-matter.cvlbfwidrytg.us-east-2.rds.amazonaws.com:5432/ers_db",
+				"ers_project",
+				"password"
+				);
+	}
 	
 		  
 		  
-		  public static Connection connect() throws SQLException {
-		    Connection conn = DriverManager.getConnection(URL,USERNAME,PASSWORD);
-		    return conn;
-		  }
+//		  public static Connection connect() throws SQLException {
+//		    Connection conn = DriverManager.getConnection(URL,USERNAME,PASSWORD);
+//		    return conn;
+//		  }
 
 }

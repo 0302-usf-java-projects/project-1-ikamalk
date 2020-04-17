@@ -98,14 +98,13 @@
               Add new request
             </button>
           </div>
-          <table id="myTableReimbursement" class="display">
+          <table id="myTableReimbursementRequest" class="display">
             <thead>
               <tr>
                 <th>Id</th>
                 <th>Amount</th>
                 <th>Submited at</th>
                 <th>Description</th>
-                <th>Receipt</th>
                 <th>Type</th>
                 <th>Status</th>
               </tr>
@@ -166,7 +165,7 @@
               
               <div class="btn-container-modal">
                <button type="button" onclick="addReimbursement();" class="btn btn-primary submitBtn">Submit</button>
-               <button class="btn btn-primary cancelBtn">Cancel</button>
+               <button class="btn btn-primary cancelBtn" data-dismiss="modal">Cancel</button>
               </div>
             </form>
           </div>
@@ -190,7 +189,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="node_modules/typed.js/lib/typed.min.js"></script>
-    <script src="js/dashboardEmployee.js"></script>
+    <script src="js/dashboardEmployee.js?n=1"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
   </body>

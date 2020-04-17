@@ -100,7 +100,6 @@
                 <th>Amount</th>
                 <th>Submited at</th>
                 <th>Description</th>
-                <th>Receipt</th>
                 <th>Type</th>
                 <th>Status</th>
                 <th>Edit</th>
@@ -151,20 +150,17 @@
                   rows="3" disabled
                 ></textarea>
               </div>
-           <!--    <div class="form-group">
-                <label for="exampleFormControlFile1">Receipt</label>
-                <input
-                  type="file"
-                  class="form-control-file"
-                  id="fileReceipt"
-                />
-              </div> -->
+
+              <label for="description">Receipt</label>
+              <a id="linkReceipt" target="_blank">
+                            <img id="reimb_receipt" class="w-100 mt-3 mb-3"/>
+              </a>
                              
               
               <div class="btn-container-modal">
                <button type="button" class="btn btn-success approveBtn">Approve</button>
                 <button type="button" class="btn btn-danger rejectBtn">Reject</button>
-               <button class="btn btn-primary cancelBtn">Cancel</button>
+               <button class="btn btn-primary cancelBtn" data-dismiss="modal">Cancel</button>
               </div>
             </form>
           </div>
@@ -188,7 +184,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="node_modules/typed.js/lib/typed.min.js"></script>
-    <script src="js/dashboardManager.js"></script>
+    <script src="js/dashboardManager.js?n=1"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
   </body>

@@ -6,7 +6,7 @@ getAllReimbursement();
 var tableIsEmpty = false;
 var navbarText;
 var requestSelected;
-
+var table;
 
 // Add reibursement form
 var amountReimbursement = document.getElementById("amountReimbursement");
@@ -20,19 +20,19 @@ var cancelBtn = document.querySelector('.cancelBtn');
 
 function showTable(data) {
 	console.log(data);
-	    $('#myTableReimbursement').DataTable( {
+	  table= $('#myTableReimbursement').DataTable( {
 	    	"data": data,
 	    	"order": [[ 0, "desc" ]],
 	    	"columns": [
-	    		 {
-		                "className":      'options',
-		                "data":           'reimb_amount',
-		                "render": function(data, type, full, meta){
-		                	return data+" $";
-		                }
-		            },
+	            { data: 'reimb_id'},
 	            { data: 'reimb_author'},
-	            { data: 'reimb_amount' },
+	            {
+	                "className":      'options',
+	                "data":           'reimb_amount',
+	                "render": function(data, type, full, meta){
+	                	return data+" $";
+	                }
+	            },
 	            {
 	                "className":      'options',
 	                "data":           'reimb_submitted',
@@ -321,6 +321,7 @@ function updateReibursement() {
 }
 
 function logout() {
+	table.destroy();
     window.location.href = "./";
     userData = {};
 }

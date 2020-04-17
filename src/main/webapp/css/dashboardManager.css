@@ -65,7 +65,7 @@
 }
 
 #navbar-title-welcome,#navbar-title-success-reimbursement {
-  width: -webkit-fill-available;
+  width: 100%;
   text-align: center;
   color:white;
   font-size:25px;

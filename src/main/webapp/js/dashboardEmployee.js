@@ -5,7 +5,7 @@ getUserData();
 getAllReimbursement();
 var tableIsEmpty = false;
 var navbarText;
-
+var table;
 
 // Add reibursement form
 var amountReimbursement = document.getElementById("amountReimbursement");
@@ -18,7 +18,7 @@ var cancelBtn = document.querySelector('.cancelBtn');
 
 function showTable(data) {
 	console.log(data);
-	    $('#myTableReimbursement').DataTable( {
+	table=  $('#myTableReimbursementRequest').DataTable( {
 	    	"data": data,
 	    	"order": [[ 0, "desc" ]],
 	    	"columns": [
@@ -91,13 +91,24 @@ function successReimbursementText() {
 	    typeSpeed: 35,
 	    showCursor: false,
 	  });
+	
+	setTimeout(()=>{
+		navbarText.destroy();
+		var navbar = document.querySelector(".navbar");
+    	navbar.classList.remove("anime_me");
+	},4000)
 	}
 
 function getUserData() {
   userData = localStorage.getItem("userData");
-  userData = JSON.parse(userData);
-  console.log(userData);
-  setUserData();
+  if(userData != null) {
+	  userData = JSON.parse(userData);
+	  console.log(userData);
+	  setUserData();
+  } else {
+	  document.write("NOPE !");
+  }
+
 }
 
 function setUserData() {
@@ -183,10 +194,11 @@ function newReibursementInit() {
 	//clear all
 	submitBtn.disabled = false;
 	cancelBtn.disabled = false;
+	submitBtn.innerHTML = "Submit";
 	amountReimbursement.value = "";
 	typeReimbursement.value = "";
 	descriptionReimbursement.value = "";
-	
+	fileReceipt.value = "";
 	//get new reimbursement list
 	//first show please wait and hide the table
 	document.getElementById("no-reibursement-container").style.display = "none";
@@ -225,6 +237,7 @@ function updateReibursement() {
 }
 
 function logout() {
+	table.destroy();
     window.location.href = "./";
     userData = {};
 }

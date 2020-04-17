@@ -65,7 +65,7 @@
 }
 
 #navbar-title-welcome,#navbar-title-success-reimbursement {
-  width: -webkit-fill-available;
+  width: 100%;
   text-align: center;
   color:white;
   font-size:25px;
@@ -132,15 +132,15 @@
   border-radius: 20px;
 }
 
-#myTableReimbursement_wrapper {
+#myTableReimbursementRequest_wrapper {
   padding: 10px 30px;
 }
 
-#myTableReimbursement_wrapper > label {
+#myTableReimbursementRequest_wrapper > label {
   color: red !important;
 }
 
-#myTableReimbursement_filter > label > input {
+#myTableReimbursementRequest_filter > label > input {
   border-radius: 20px !important;
 }
 
