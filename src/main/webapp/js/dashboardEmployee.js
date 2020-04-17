@@ -23,22 +23,48 @@ function showTable(data) {
 	    	"order": [[ 0, "desc" ]],
 	    	"columns": [
 	            { data: 'reimb_id' },
-	            { data: 'reimb_amount' },
-	            { data: 'reimb_submitted' },
+	            {
+	                "className":      'options',
+	                "data":           'reimb_amount',
+	                "render": function(data, type, full, meta){
+	                	return data+" $";
+	                }
+	            },
+	            {
+	                "className":      'options',
+	                "data":           'reimb_submitted',
+	                "render": function(data, type, full, meta){
+	                	return data.split(':')[0] +":"+data.split(':')[1];
+	                }
+	            },
 	            { data: 'reimb_description' },
-	            { data: 'reimb_receipt' },
-	            { data: 'reimb_type_id' },
+	            {
+	                "className":      'options',
+	                "data":           'reimb_type_id',
+	                "render": function(data, type, full, meta){
+	                	if(data == 1) {
+	                		return "<button class='btn btn-warning' style='border-radius:20px !important'>Lodging</button>"
+	                	} else if (data == 2) {
+	                		return "<button class='btn btn-info' style='border-radius:20px !important'>Travel</button>"
+	                	} else if (data ==3) {
+	                		return "<button class='btn btn-success' style='border-radius:20px !important'>Food</button>"
+	                	} else if (data ==4) {
+	                		return "<button class='btn btn-secondary' style='border-radius:20px !important'>Other</button>"
+
+	                	}
+	                }
+	            },
 	            {
 	                "className":      'options',
 	                "data":           'reimb_status_id',
 	                "render": function(data, type, full, meta){
 	                	if(data == 1) {
-		                   return '<button class="btn btn-warning btn-table" disabled data-toggle="tooltip" data-placement="top" title="Tooltip on top"> <i class="fas fa-clock"></i></button>';
+		                   return '<button class="btn btn-warning btn-table" disabled data-toggle="tooltip" data-placement="top" title="Pending"> <i class="fas fa-clock"></i></button>';
 	                	} else if (data == 2) {
-			                   return '<button class="btn btn-success btn-table" data-toggle="tooltip" data-placement="top" title="Tooltip on top" disabled><i class="fas fa-check"></i></button>';
+			                   return '<button class="btn btn-success btn-table" data-toggle="tooltip" data-placement="top" title="Accepted" disabled><i class="fas fa-check"></i></button>';
 
 	                	} else if (data ==3) {
-			                   return '<button class="btn btn-danger btn-table" data-toggle="tooltip" data-placement="top" title="Tooltip on top" disabled><i class="fas fa-times"></i></button>';
+			                   return '<button class="btn btn-danger btn-table" data-toggle="tooltip" data-placement="top" title="Rejected" disabled><i class="fas fa-times"></i></button>';
 
 	                	}
 	                }
@@ -130,7 +156,7 @@ function addReimbursement() {
 	data.append('typeReimbursement', typeReimbursement.value);
 	data.append('descriptionReimbursement', descriptionReimbursement.value);
 	data.append('authorReimbursement',userData.username);
-	//data.append('fileReceipt', ''); //fileReceipt.files[0]
+	data.append('fileReceipt', fileReceipt.files[0]); //
 
 	
 

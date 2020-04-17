@@ -1,4 +1,5 @@
 saidWelcome();
+var userData;
 
 //Containers
 var loginContainer = document.getElementById("login-container");
@@ -55,6 +56,7 @@ function login() {
   })
     .then((response) => response.json())
     .then((data) => {
+    	userData = data;
       if (data != null) {
         triangleWrongLogin.className = "smooth-hide";
         tirangleSuccessLogin.style.display = "block";
@@ -145,7 +147,7 @@ function writeWrongLogin() {
 function writeSuccessLogin() {
   var loginUsername = document.getElementById("login-username");
   new Typed("#triangle-text-success-login", {
-    strings: ["", "Welcome " + loginUsername.value + " !"],
+    strings: ["", "Welcome " + userData.first_name + " !"],
     typeSpeed: 30,
     showCursor: false,
   });

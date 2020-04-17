@@ -1,5 +1,7 @@
 package com.ers.model;
 
+import java.io.InputStream;
+
 public class Reimbursement {
 	private int reimb_id;
 	private double reimb_amount;
@@ -27,7 +29,7 @@ public class Reimbursement {
 		// TODO Auto-generated constructor stub
 	}
 	public Reimbursement(int reimb_id, double reimb_amount, String reimb_submitted, String reimb_resolved,
-			String reimb_description, String reimb_receipt, String reimb_author, String reimb_resolver,
+			String reimb_description, String reimb_author, String reimb_resolver,
 			int reimb_status_id, int reimb_type_id) {
 		super();
 		this.reimb_id = reimb_id;
@@ -35,7 +37,6 @@ public class Reimbursement {
 		this.reimb_submitted = reimb_submitted;
 		this.reimb_resolved = reimb_resolved;
 		this.reimb_description = reimb_description;
-		this.reimb_receipt = reimb_receipt;
 		this.reimb_author = reimb_author;
 		this.reimb_resolver = reimb_resolver;
 		this.reimb_status_id = reimb_status_id;
@@ -44,11 +45,10 @@ public class Reimbursement {
 	
 	
 	//add Reimbursement
-	public Reimbursement(double reimb_amount, String reimb_description, String reimb_receipt, String reimb_author, int reimb_type_id) {
+	public Reimbursement(double reimb_amount, String reimb_description, String reimb_author, int reimb_type_id) {
 		super();
 		this.reimb_amount = reimb_amount;
 		this.reimb_description = reimb_description;
-		this.reimb_receipt = reimb_receipt;
 		this.reimb_author = reimb_author;
 		this.reimb_type_id = reimb_type_id;
 	}
@@ -81,12 +81,6 @@ public class Reimbursement {
 	}
 	public void setReimb_description(String reimb_description) {
 		this.reimb_description = reimb_description;
-	}
-	public String getReimb_receipt() {
-		return reimb_receipt;
-	}
-	public void setReimb_receipt(String reimb_receipt) {
-		this.reimb_receipt = reimb_receipt;
 	}
 	public String getReimb_author() {
 		return reimb_author;

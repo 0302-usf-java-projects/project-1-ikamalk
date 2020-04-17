@@ -1,5 +1,6 @@
 package com.ers.service;
 
+import java.io.InputStream;
 import java.util.List;
 
 import com.ers.dao.ErsDAO;
@@ -18,12 +19,16 @@ public class ErsServices {
 		return ersdao.GetAllReimbursement(id);
 	}
 	
-	public boolean AddReimbursementService(Reimbursement newReimbursement) {
-		return ersdao.AddReimbursement(newReimbursement);
+	public boolean AddReimbursementService(Reimbursement newReimbursement,InputStream file) {
+		return ersdao.AddReimbursement(newReimbursement,file);
 	}
 	
 	public boolean ReimbursementDecisionService(int reimb_id,int decision) {
 		return ersdao.ReimbursementDecision(reimb_id,decision);
+	}
+	
+	public InputStream getReceiptService(int reimb_id) {
+		return ersdao.getReceipt(reimb_id);
 	}
 
 }

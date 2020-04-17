@@ -18,7 +18,6 @@ public class DashboardServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println(user.getRole_id());
 		if(user.getRole_id() == 1) {
 			RequestDispatcher view = req.getRequestDispatcher("html/dashboardManager.html");
 			view.forward(req, resp);

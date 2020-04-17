@@ -212,14 +212,26 @@
 
 
 /*************ANIME COLOR***********************/
-@keyframes anime_color_navbar {
+@keyframes anime_color_navbar_success {
    0%   {background: #7d0094;}
    10%  {background: green;}
    90%  {background: green;}
   100% {background: #7d0094;}
 }
 
-.anime_me {
-  animation-name: anime_color_navbar;
+@keyframes anime_color_navbar_failure {
+   0%   {background: #7d0094;}
+   10%  {background: #9c0000;}
+   90%  {background: #9c0000;}
+  100% {background: #7d0094;}
+}
+
+.anime_me_success {
+  animation-name: anime_color_navbar_success;
+  animation-duration: 4s;
+}
+
+.anime_me_failure {
+  animation-name: anime_color_navbar_failure;
   animation-duration: 4s;
 }
